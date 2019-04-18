@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "dshop",
+    "name": "dShop",
+    "description": "Description",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://dumk.in/",
+    "updateJSON": "",
+    "authorList": [
+      "Dumkin"
+    ],
+    "credits": "I'd like to thank my mother and father.",
+    "logoFile": "assets/dshop/textures/logo.png"
+  }
+]
