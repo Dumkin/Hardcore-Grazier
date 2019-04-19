@@ -1,6 +1,6 @@
-package in.dumk.dshop;
+package in.dumk.hardcore_grazier;
 
-import in.dumk.dshop.item.ItemInjector;
+import in.dumk.hardcore_grazier.item.ItemInjector;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

@@ -1,6 +1,6 @@
-package in.dumk.dshop.tabs;
+package in.dumk.hardcore_grazier.tabs;
 
-import in.dumk.dshop.ItemsRegister;
+import in.dumk.hardcore_grazier.ItemsRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 

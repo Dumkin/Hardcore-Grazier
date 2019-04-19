@@ -1,7 +1,7 @@
 [
   {
-    "modid": "dshop",
-    "name": "dShop",
+    "modid": "hardcore_grazier",
+    "name": "Hardcore Grazier",
     "description": "Description",
     "version": "${version}",
     "mcversion": "${mcversion}",
@@ -10,7 +10,6 @@
     "authorList": [
       "Dumkin"
     ],
-    "credits": "I'd like to thank my mother and father.",
-    "logoFile": "assets/dshop/textures/logo.png"
+    "credits": "I'd like to thank my mother and father."
   }
 ]

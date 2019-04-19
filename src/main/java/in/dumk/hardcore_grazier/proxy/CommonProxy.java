@@ -1,6 +1,9 @@
-package in.dumk.dshop.proxy;
+package in.dumk.hardcore_grazier.proxy;
 
-import in.dumk.dshop.ItemsRegister;
+import in.dumk.hardcore_grazier.BlocksRegister;
+import in.dumk.hardcore_grazier.CowJarHandler;
+import in.dumk.hardcore_grazier.ItemsRegister;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -11,6 +14,9 @@ public class CommonProxy {
     System.out.println("\u001B[32m" + event.getModConfigurationDirectory() + "\u001B[0m");
 
     ItemsRegister.register();
+    BlocksRegister.register();
+
+    MinecraftForge.EVENT_BUS.register(new CowJarHandler());
   }
 
   public void init(FMLInitializationEvent event) {

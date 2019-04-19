@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "dshop:items/injector"
+        "layer0": "hardcore_grazier:items/injector"
     }
 }

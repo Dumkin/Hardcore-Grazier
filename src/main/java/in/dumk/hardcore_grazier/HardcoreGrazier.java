@@ -1,7 +1,7 @@
-package in.dumk.dshop;
+package in.dumk.hardcore_grazier;
 
-import in.dumk.dshop.proxy.CommonProxy;
-import in.dumk.dshop.tabs.TabMain;
+import in.dumk.hardcore_grazier.proxy.CommonProxy;
+import in.dumk.hardcore_grazier.tabs.TabMain;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -11,14 +11,14 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = dShopMod.MODID, name = dShopMod.NAME, version = dShopMod.VERSION, useMetadata = dShopMod.USEMETADATA)
-public class dShopMod {
-    public static final String MODID = "dshop";
-    public static final String NAME = "dShop";
+@Mod(modid = HardcoreGrazier.MODID, name = HardcoreGrazier.NAME, version = HardcoreGrazier.VERSION, useMetadata = HardcoreGrazier.USEMETADATA)
+public class HardcoreGrazier {
+    public static final String MODID = "hardcore_grazier";
+    public static final String NAME = "Hardcore Grazier";
     public static final String VERSION = "1.0.0";
     public static final boolean USEMETADATA = true;
 
-    @SidedProxy(clientSide = "in.dumk.dshop.proxy.ClientProxy", serverSide = "in.dumk.dshop.proxy.CommonProxy")
+    @SidedProxy(clientSide = "in.dumk.hardcore_grazier.proxy.ClientProxy", serverSide = "in.dumk.hardcore_grazier.proxy.CommonProxy")
     public static CommonProxy proxy;
 
     private static Logger logger;
