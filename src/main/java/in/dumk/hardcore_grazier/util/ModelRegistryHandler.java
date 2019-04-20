@@ -1,7 +1,5 @@
-package in.dumk.hardcore_grazier.tile;
+package in.dumk.hardcore_grazier.util;
 
-import in.dumk.hardcore_grazier.util.HardcoreGrazierBlocks;
-import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;

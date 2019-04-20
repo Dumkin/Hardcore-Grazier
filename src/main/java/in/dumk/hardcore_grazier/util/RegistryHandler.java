@@ -1,8 +1,7 @@
-package in.dumk.hardcore_grazier.tile;
+package in.dumk.hardcore_grazier.util;
 
 import in.dumk.hardcore_grazier.block.BlockAnalyzer;
 import in.dumk.hardcore_grazier.item.ItemInjector;
-import in.dumk.hardcore_grazier.util.HardcoreGrazierBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
