@@ -21,6 +21,9 @@ public class HardcoreGrazier {
     public static final String CLIENT = "in.dumk.hardcore_grazier.proxy.ClientProxy";
     public static final String SERVER = "in.dumk.hardcore_grazier.proxy.CommonProxy";
 
+    @Mod.Instance
+    public static HardcoreGrazier INSTANCE;
+
     @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
     public static CommonProxy proxy;
 

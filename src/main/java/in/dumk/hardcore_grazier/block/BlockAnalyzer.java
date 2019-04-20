@@ -1,6 +1,7 @@
 package in.dumk.hardcore_grazier.block;
 
 import in.dumk.hardcore_grazier.HardcoreGrazier;
+import in.dumk.hardcore_grazier.gui.GuiHandler;
 import in.dumk.hardcore_grazier.tile.TileEntityAnalyzer;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -60,22 +61,25 @@ public class BlockAnalyzer extends Block {
 
   @Override
   public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-//    if (!worldIn.isRemote) {
+    if (!worldIn.isRemote) {
 //      TileEntityCoalGenerator press = (TileEntityCoalGenerator)world.getTileEntity(pos);
 //      if (press != null) {
-//        player.openGui(HardcoreGrazier.INSTANCE, GuiHandler.GuiTypes.COAL_GENERATOR.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
+      playerIn.openGui(HardcoreGrazier.INSTANCE, GuiHandler.BLOCK_ANALYZER, worldIn, pos.getX(), pos.getY(), pos.getZ());
 //      }
 //      return true;
+    }
+//    return true;
+
+//    if (!worldIn.isRemote) {
+//      TileEntityAnalyzer tileEntity = getTileEntity(worldIn, pos);
+//      if (facing == EnumFacing.UP) {
+//        tileEntity.incrementCount();
+//      }
+//      playerIn.sendMessage(new TextComponentString("Count: " + tileEntity.getCount()));
 //    }
 //    return true;
-    if (!worldIn.isRemote) {
-      TileEntityAnalyzer tileEntity = getTileEntity(worldIn, pos);
-      if (facing == EnumFacing.UP) {
-        tileEntity.incrementCount();
-      }
-      playerIn.sendMessage(new TextComponentString("Count: " + tileEntity.getCount()));
-    }
-    return true;
+
+    return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
   }
 
   @Override
