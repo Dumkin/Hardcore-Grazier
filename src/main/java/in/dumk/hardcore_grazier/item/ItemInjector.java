@@ -1,8 +1,6 @@
 package in.dumk.hardcore_grazier.item;
 
 import in.dumk.hardcore_grazier.HardcoreGrazier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,11 +17,6 @@ public class ItemInjector extends Item {
     this.setUnlocalizedName(HardcoreGrazier.MODID + "." + name);
 
     setCreativeTab(HardcoreGrazier.Tab);
-  }
-
-  @SideOnly(Side.CLIENT)
-  public void registerModel() {
-    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
   }
 
   @SideOnly(Side.CLIENT)

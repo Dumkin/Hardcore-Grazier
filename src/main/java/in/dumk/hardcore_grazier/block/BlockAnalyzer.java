@@ -3,6 +3,7 @@ package in.dumk.hardcore_grazier.block;
 import in.dumk.hardcore_grazier.HardcoreGrazier;
 import in.dumk.hardcore_grazier.tile.TileEntityAnalyzer;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,8 +18,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockAnalyzer extends Block {
   public BlockAnalyzer(String name) {
-    super(Material.IRON);
+    super(Material.ANVIL);
 
+    this.setSoundType(SoundType.ANVIL);
     this.setRegistryName(name);
     this.setUnlocalizedName(HardcoreGrazier.MODID + "." + name);
 

@@ -1,7 +1,7 @@
 package in.dumk.hardcore_grazier.tabs;
 
 import in.dumk.hardcore_grazier.HardcoreGrazier;
-import in.dumk.hardcore_grazier.ItemsRegister;
+import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -15,6 +15,6 @@ public class TabMain extends CreativeTabs {
   @SideOnly(Side.CLIENT)
   @Override
   public ItemStack getTabIconItem() {
-    return new ItemStack(ItemsRegister.INJECTOR);
+    return new ItemStack(HardcoreGrazierItems.INJECTOR);
   }
 }
