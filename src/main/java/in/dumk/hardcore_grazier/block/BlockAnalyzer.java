@@ -12,6 +12,8 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -42,6 +44,11 @@ public class BlockAnalyzer extends Block {
     return new TileEntityAnalyzer();
   }
 
+  // TODO: Wtf method?
+  public TileEntityAnalyzer getTileEntity(IBlockAccess world, BlockPos position) {
+    return (TileEntityAnalyzer) world.getTileEntity(position);
+  }
+
   @Override
   public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 //    if (!worldIn.isRemote) {
@@ -51,6 +58,14 @@ public class BlockAnalyzer extends Block {
 //      }
 //      return true;
 //    }
+//    return true;
+    if (!worldIn.isRemote) {
+      TileEntityAnalyzer tileEntity = getTileEntity(worldIn, pos);
+      if (facing == EnumFacing.UP) {
+        tileEntity.incrementCount();
+      }
+      playerIn.sendMessage(new TextComponentString("Count: " + tileEntity.getCount()));
+    }
     return true;
   }
 }
