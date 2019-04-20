@@ -20,9 +20,8 @@ public class GuiHandler implements IGuiHandler {
       case BLOCK_ANALYZER:
         return new ContainerBlockAnalyzer(player.inventory, (TileEntityAnalyzer) world.getTileEntity(new BlockPos(x, y, z)));
       default:
-//        throw new Error("wtf");
+        return null;
     }
-    return null;
   }
 
   @Nullable
@@ -32,8 +31,7 @@ public class GuiHandler implements IGuiHandler {
       case BLOCK_ANALYZER:
         return new GuiBlockAnalyzer(player.inventory, (TileEntityAnalyzer) world.getTileEntity(new BlockPos(x, y, z)));
       default:
-//        throw new Error("wtf");
+        return null;
     }
-    return null;
   }
 }

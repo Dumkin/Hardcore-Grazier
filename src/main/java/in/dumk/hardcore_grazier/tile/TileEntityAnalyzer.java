@@ -14,16 +14,16 @@ import javax.annotation.Nullable;
 public class TileEntityAnalyzer extends TileEntity implements ICapabilityProvider {
 
   private ItemStackHandler handler;
-  private int count;
+//  private int count;
 
   public TileEntityAnalyzer() {
-    count = 0;
+//    count = 0;
     handler = new ItemStackHandler(9);
   }
 
   @Override
   public void readFromNBT(NBTTagCompound compound) {
-    count = compound.getInteger("count");
+//    count = compound.getInteger("count");
     handler.deserializeNBT(compound.getCompoundTag("handler"));
 
     super.readFromNBT(compound);
@@ -31,20 +31,24 @@ public class TileEntityAnalyzer extends TileEntity implements ICapabilityProvide
 
   @Override
   public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-    compound.setInteger("count", count);
+//    compound.setInteger("count", count);
     compound.setTag("handler", handler.serializeNBT());
 
     return super.writeToNBT(compound);
   }
 
-  public int getCount() {
-    return this.count;
-  }
+  // TODO: wtf code
+  // https://www.youtube.com/watch?v=4Y_9B58vbPw&list=PLpKu3PfwdqHRA8aoa4RAzO9camNR9Tm45&index=21
+  // 7:29
 
-  public void incrementCount() {
-    this.count++;
-    this.markDirty();
-  }
+//  public int getCount() {
+//    return this.count;
+//  }
+//
+//  public void incrementCount() {
+//    this.count++;
+//    this.markDirty();
+//  }
 
   @Override
   public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
