@@ -7,6 +7,8 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -17,6 +19,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class BlockAnalyzer extends Block {
   public BlockAnalyzer(String name) {
@@ -49,6 +54,10 @@ public class BlockAnalyzer extends Block {
     return (TileEntityAnalyzer) world.getTileEntity(position);
   }
 
+  // TODO: wtf code
+  // https://www.youtube.com/watch?v=4Y_9B58vbPw&list=PLpKu3PfwdqHRA8aoa4RAzO9camNR9Tm45&index=21
+  // 7:29
+
   @Override
   public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 //    if (!worldIn.isRemote) {
@@ -67,5 +76,18 @@ public class BlockAnalyzer extends Block {
       playerIn.sendMessage(new TextComponentString("Count: " + tileEntity.getCount()));
     }
     return true;
+  }
+
+  @Override
+  public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+    TileEntityAnalyzer tile = (TileEntityAnalyzer)worldIn.getTileEntity(pos);
+    IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+
+    for (int slot = 0; slot < handler.getSlots() - 1; slot++) {
+      ItemStack stack = handler.getStackInSlot(slot);
+      InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack);
+    }
+
+    super.breakBlock(worldIn, pos, state);
   }
 }
