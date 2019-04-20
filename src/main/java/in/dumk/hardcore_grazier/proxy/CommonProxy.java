@@ -3,6 +3,7 @@ package in.dumk.hardcore_grazier.proxy;
 import in.dumk.hardcore_grazier.entity.ClickEventHandler;
 import in.dumk.hardcore_grazier.HardcoreGrazier;
 import in.dumk.hardcore_grazier.tile.TileEntityAnalyzer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -15,8 +16,8 @@ public class CommonProxy {
     HardcoreGrazier.logger.info("\u001B[32m" + event.getModConfigurationDirectory() + "\u001B[0m");
 
     MinecraftForge.EVENT_BUS.register(new ClickEventHandler());
-    // TODO: Fix deprecated
-    GameRegistry.registerTileEntity(TileEntityAnalyzer.class, HardcoreGrazier.MODID + ":analyzer");
+
+    GameRegistry.registerTileEntity(TileEntityAnalyzer.class, new ResourceLocation(HardcoreGrazier.MODID, "analyzer"));
   }
 
   public void init(FMLInitializationEvent event) {

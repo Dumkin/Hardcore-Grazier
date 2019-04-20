@@ -15,14 +15,12 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 
 public class BlockAnalyzer extends Block {
   public BlockAnalyzer(String name) {
@@ -50,10 +48,10 @@ public class BlockAnalyzer extends Block {
     return new TileEntityAnalyzer();
   }
 
-  // TODO: Wtf method?
-  public TileEntityAnalyzer getTileEntity(IBlockAccess world, BlockPos position) {
-    return (TileEntityAnalyzer) world.getTileEntity(position);
-  }
+//  // TODO: Wtf method?
+//  public TileEntityAnalyzer getTileEntity(IBlockAccess world, BlockPos position) {
+//    return (TileEntityAnalyzer) world.getTileEntity(position);
+//  }
 
   // TODO: wtf code
   // https://www.youtube.com/watch?v=4Y_9B58vbPw&list=PLpKu3PfwdqHRA8aoa4RAzO9camNR9Tm45&index=21
@@ -61,7 +59,10 @@ public class BlockAnalyzer extends Block {
 
   @Override
   public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    HardcoreGrazier.logger.info(!worldIn.isRemote);
+    // TODO: WTF server gui
     if (!worldIn.isRemote) {
+//    if (worldIn.isRemote) {
 //      TileEntityCoalGenerator press = (TileEntityCoalGenerator)world.getTileEntity(pos);
 //      if (press != null) {
       playerIn.openGui(HardcoreGrazier.INSTANCE, GuiHandler.BLOCK_ANALYZER, worldIn, pos.getX(), pos.getY(), pos.getZ());

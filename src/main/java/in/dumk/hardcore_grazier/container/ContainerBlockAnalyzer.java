@@ -11,13 +11,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerBlockAnalyzer extends Container {
-
-  private TileEntityAnalyzer te;
-//  private IItemHandler handler;
-
   public ContainerBlockAnalyzer(IInventory playerInv, TileEntityAnalyzer te) {
     IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-//    handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
     this.addSlotToContainer(new SlotItemHandler(handler, 0, 62, 17));
 
     int xPos = 8;
@@ -34,38 +29,59 @@ public class ContainerBlockAnalyzer extends Container {
     }
   }
 
+  // TODO: Shift click beta
+  @Override
+  public ItemStack transferStackInSlot(EntityPlayer player, int slot){
+    int inventoryStart = 1;
+    int inventoryEnd = inventoryStart+26;
+    int hotbarStart = inventoryEnd+1;
+    int hotbarEnd = hotbarStart+8;
 
-  // TODO: Shift click crash
-//  @Override
-//  public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
-//    ItemStack previous = ItemStack.EMPTY;
-//    Slot slot = (Slot) this.inventorySlots.get(fromSlot);
+    Slot theSlot = this.inventorySlots.get(slot);
+
+    if(theSlot != null && theSlot.getHasStack()){
+      ItemStack newStack = theSlot.getStack();
+      ItemStack currentStack = newStack.copy();
+
+      //Other Slots in Inventory excluded
+      if(slot >= inventoryStart){
+//        Shift from Inventory
+//        if(newStack.getItem() == InitItems.itemMisc && newStack.getItemDamage() == TheMiscItems.CANOLA.ordinal()){
+//          if(!this.mergeItemStack(newStack, 0, 1, false)){
+//            return ItemStack.EMPTY;
+//          }
+//        }
 //
-//    if (slot != null && slot.getHasStack()) {
-//      ItemStack current = slot.getStack();
-//      previous = current.copy();
-//
-//      if (fromSlot < this.handler.getSlots()) {
-//        // From the block breaker inventory to player's inventory
-//        if (!this.mergeItemStack(current, handler.getSlots(), handler.getSlots() + 36, true))
-//          return ItemStack.EMPTY;
-//      } else {
-//        // From the player's inventory to block breaker's inventory
-//        if (!this.mergeItemStack(current, 0, handler.getSlots(), false))
-//          return ItemStack.EMPTY;
-//      }
-//
-//      if (current.getCount() == 0) //Use func_190916_E() instead of stackSize 1.11 only 1.11.2 use getCount()
-//        slot.putStack(ItemStack.EMPTY); //Use ItemStack.field_190927_a instead of (ItemStack)null for a blank item stack. In 1.11.2 use ItemStack.EMPTY
-//      else
-//        slot.onSlotChanged();
-//
-//      if (current.getCount() == previous.getCount())
-//        return null;
-//      slot.onTake(playerIn, current);
-//    }
-//    return previous;
-//  }
+//        else if(slot >= inventoryStart && slot <= inventoryEnd){
+        if(slot <= inventoryEnd){
+          if(!this.mergeItemStack(newStack, hotbarStart, hotbarEnd+1, false)){
+            return ItemStack.EMPTY;
+          }
+        }
+        else if(slot < hotbarEnd+1 && !this.mergeItemStack(newStack, inventoryStart, inventoryEnd+1, false)){
+          return ItemStack.EMPTY;
+        }
+      }
+      else if(!this.mergeItemStack(newStack, inventoryStart, hotbarEnd+1, false)){
+        return ItemStack.EMPTY;
+      }
+
+      if(newStack.isEmpty()) {
+        theSlot.putStack(ItemStack.EMPTY);
+      }
+      else{
+        theSlot.onSlotChanged();
+      }
+
+      if(newStack.getCount() == currentStack.getCount()){
+        return ItemStack.EMPTY;
+      }
+      theSlot.onTake(player, newStack);
+
+      return currentStack;
+    }
+    return ItemStack.EMPTY;
+  }
 
   @Override
   public boolean canInteractWith(EntityPlayer playerIn) {

@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiBlockAnalyzer extends GuiContainer {
 
-  private TileEntityAnalyzer te;
+//  private TileEntityAnalyzer te;
   private IInventory playerInv;
 
   public GuiBlockAnalyzer(IInventory playerInv, TileEntityAnalyzer te) {
@@ -21,7 +21,7 @@ public class GuiBlockAnalyzer extends GuiContainer {
     this.ySize = 166;
 
     this.playerInv = playerInv;
-    this.te = te;
+//    this.te = te;
   }
 
   @Override
