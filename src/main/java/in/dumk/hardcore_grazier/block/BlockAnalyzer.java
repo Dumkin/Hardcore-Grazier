@@ -20,7 +20,7 @@ public class BlockAnalyzer extends Block {
     super(Material.IRON);
 
     this.setRegistryName(name);
-    this.setUnlocalizedName(getRegistryName().toString());
+    this.setUnlocalizedName(HardcoreGrazier.MODID + "." + name);
 
     setCreativeTab(HardcoreGrazier.Tab);
   }

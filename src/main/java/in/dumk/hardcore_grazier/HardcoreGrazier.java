@@ -17,7 +17,7 @@ public class HardcoreGrazier {
     public static final String NAME = "Hardcore Grazier";
     public static final String VERSION = "1.0.0";
     public static final boolean USEMETADATA = true;
-    
+
     @SidedProxy(clientSide = "in.dumk.hardcore_grazier.proxy.ClientProxy", serverSide = "in.dumk.hardcore_grazier.proxy.CommonProxy")
     public static CommonProxy proxy;
 
