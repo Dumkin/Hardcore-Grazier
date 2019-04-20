@@ -16,7 +16,7 @@ import java.util.List;
 public class ItemInjector extends Item {
   public ItemInjector(String name) {
     this.setRegistryName(name);
-    this.setUnlocalizedName(getRegistryName().toString());
+    this.setUnlocalizedName(HardcoreGrazier.MODID + "." + name);
 
     setCreativeTab(HardcoreGrazier.Tab);
   }
