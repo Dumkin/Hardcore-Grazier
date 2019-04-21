@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TabMain extends CreativeTabs {
-  public TabMain(String label){
+  public TabMain(String label) {
     super(HardcoreGrazier.MODID + "." + label);
   }
 

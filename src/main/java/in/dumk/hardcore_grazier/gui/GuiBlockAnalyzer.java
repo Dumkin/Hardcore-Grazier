@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiBlockAnalyzer extends GuiContainer {
 
-//  private TileEntityAnalyzer te;
+  //  private TileEntityAnalyzer te;
   private IInventory playerInv;
 
   public GuiBlockAnalyzer(IInventory playerInv, TileEntityAnalyzer te) {

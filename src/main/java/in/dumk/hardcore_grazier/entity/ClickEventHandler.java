@@ -25,9 +25,9 @@ public class ClickEventHandler {
       return;
     }
 
-    EntityHorse horse = (EntityHorse)event.getTarget();
+    EntityHorse horse = (EntityHorse) event.getTarget();
 
-    horse.attackEntityFrom(new DamageSource("Injector"),2f);
+    horse.attackEntityFrom(new DamageSource("Injector"), 2f);
 
     NBTTagCompound nbt;
     if (item.hasTagCompound()) {

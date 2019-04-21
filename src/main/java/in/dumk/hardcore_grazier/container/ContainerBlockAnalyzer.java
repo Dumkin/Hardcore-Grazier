@@ -36,20 +36,20 @@ public class ContainerBlockAnalyzer extends Container {
 
   // TODO: Shift click beta
   @Override
-  public ItemStack transferStackInSlot(EntityPlayer player, int slot){
+  public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
     int inventoryStart = 9;
-    int inventoryEnd = inventoryStart+26;
-    int hotbarStart = inventoryEnd+1;
-    int hotbarEnd = hotbarStart+8;
+    int inventoryEnd = inventoryStart + 26;
+    int hotbarStart = inventoryEnd + 1;
+    int hotbarEnd = hotbarStart + 8;
 
     Slot theSlot = this.inventorySlots.get(slot);
 
-    if(theSlot != null && theSlot.getHasStack()){
+    if (theSlot != null && theSlot.getHasStack()) {
       ItemStack newStack = theSlot.getStack();
       ItemStack currentStack = newStack.copy();
 
       //Other Slots in Inventory excluded
-      if(slot >= inventoryStart){
+      if (slot >= inventoryStart) {
 //        Shift from Inventory
 //        if(newStack.getItem() == InitItems.itemMisc && newStack.getItemDamage() == TheMiscItems.CANOLA.ordinal()){
 //          if(!this.mergeItemStack(newStack, 0, 1, false)){
@@ -58,27 +58,24 @@ public class ContainerBlockAnalyzer extends Container {
 //        }
 //
 //        else if(slot >= inventoryStart && slot <= inventoryEnd){
-        if(slot <= inventoryEnd){
-          if(!this.mergeItemStack(newStack, hotbarStart, hotbarEnd+1, false)){
+        if (slot <= inventoryEnd) {
+          if (!this.mergeItemStack(newStack, hotbarStart, hotbarEnd + 1, false)) {
             return ItemStack.EMPTY;
           }
-        }
-        else if(slot < hotbarEnd+1 && !this.mergeItemStack(newStack, inventoryStart, inventoryEnd+1, false)){
+        } else if (slot < hotbarEnd + 1 && !this.mergeItemStack(newStack, inventoryStart, inventoryEnd + 1, false)) {
           return ItemStack.EMPTY;
         }
-      }
-      else if(!this.mergeItemStack(newStack, inventoryStart, hotbarEnd+1, false)){
+      } else if (!this.mergeItemStack(newStack, inventoryStart, hotbarEnd + 1, false)) {
         return ItemStack.EMPTY;
       }
 
-      if(newStack.isEmpty()) {
+      if (newStack.isEmpty()) {
         theSlot.putStack(ItemStack.EMPTY);
-      }
-      else{
+      } else {
         theSlot.onSlotChanged();
       }
 
-      if(newStack.getCount() == currentStack.getCount()){
+      if (newStack.getCount() == currentStack.getCount()) {
         return ItemStack.EMPTY;
       }
       theSlot.onTake(player, newStack);
