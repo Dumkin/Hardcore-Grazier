@@ -6,5 +6,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(HardcoreGrazier.MODID)
 public class HardcoreGrazierItems {
-  public static final Item INJECTOR = null;
+  public static final Item SYRINGE = null;
+  public static final Item SYRINGE_BLOOD = null;
+  public static final Item DECODED_DNA = null;
 }

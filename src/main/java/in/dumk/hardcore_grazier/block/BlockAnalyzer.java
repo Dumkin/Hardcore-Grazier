@@ -23,9 +23,9 @@ import net.minecraftforge.items.IItemHandler;
 
 public class BlockAnalyzer extends Block {
   public BlockAnalyzer(String name) {
-    super(Material.ANVIL);
+    super(Material.IRON);
 
-    this.setSoundType(SoundType.ANVIL);
+    this.setSoundType(SoundType.METAL);
     this.setRegistryName(name);
     this.setUnlocalizedName(HardcoreGrazier.MODID + "." + name);
 
@@ -47,31 +47,21 @@ public class BlockAnalyzer extends Block {
     return new TileEntityAnalyzer();
   }
 
-  // TODO: WTF server gui
   @Override
   public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
     HardcoreGrazier.logger.info(!worldIn.isRemote);
 
-    if(!worldIn.isRemote){
-      if(worldIn.getTileEntity(pos) instanceof TileEntityAnalyzer){
+    if (!worldIn.isRemote) {
+      if (worldIn.getTileEntity(pos) instanceof TileEntityAnalyzer) {
         playerIn.openGui(HardcoreGrazier.INSTANCE, GuiHandler.BLOCK_ANALYZER, worldIn, pos.getX(), pos.getY(), pos.getZ());
       }
     }
     return true;
   }
 
-//    if (!worldIn.isRemote) {
-//      TileEntityAnalyzer tileEntity = getTileEntity(worldIn, pos);
-//      if (facing == EnumFacing.UP) {
-//        tileEntity.incrementCount();
-//      }
-//      playerIn.sendMessage(new TextComponentString("Count: " + tileEntity.getCount()));
-//    }
-//    return true;
-
   @Override
   public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-    TileEntityAnalyzer tile = (TileEntityAnalyzer)worldIn.getTileEntity(pos);
+    TileEntityAnalyzer tile = (TileEntityAnalyzer) worldIn.getTileEntity(pos);
     IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
     for (int slot = 0; slot < handler.getSlots() - 1; slot++) {

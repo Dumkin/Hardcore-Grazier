@@ -14,11 +14,13 @@ public class ContainerBlockAnalyzer extends Container {
   public ContainerBlockAnalyzer(IInventory playerInv, TileEntityAnalyzer te) {
     IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
-    for (int y = 0; y < 3; ++y) {
-      for (int x = 0; x < 3; ++x) {
-        this.addSlotToContainer(new SlotItemHandler(handler, x + y * 3, 62 + x * 18, 17 + y * 18));
-      }
-    }
+    this.addSlotToContainer(new SlotItemHandler(handler, 0, 62 + 0 * 18, 17));
+    this.addSlotToContainer(new SlotItemHandler(handler, 1, 62 + 2 * 18, 17));
+//    for (int y = 0; y < 3; ++y) {
+//      for (int x = 0; x < 3; ++x) {
+//        this.addSlotToContainer(new SlotItemHandler(handler, x + y * 3, 62 + x * 18, 17 + y * 18));
+//      }
+//    }
 
     int xPos = 8;
     int yPos = 84;
@@ -37,7 +39,7 @@ public class ContainerBlockAnalyzer extends Container {
   // TODO: Shift click beta
   @Override
   public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-    int inventoryStart = 9;
+    int inventoryStart = TileEntityAnalyzer.itemsCount;
     int inventoryEnd = inventoryStart + 26;
     int hotbarStart = inventoryEnd + 1;
     int hotbarEnd = hotbarStart + 8;

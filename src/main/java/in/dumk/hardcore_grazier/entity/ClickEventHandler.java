@@ -1,8 +1,12 @@
 package in.dumk.hardcore_grazier.entity;
 
-import in.dumk.hardcore_grazier.item.ItemInjector;
+import in.dumk.hardcore_grazier.HardcoreGrazier;
+import in.dumk.hardcore_grazier.item.ItemSyringe;
+import in.dumk.hardcore_grazier.item.ItemSyringeBlood;
+import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -18,7 +22,7 @@ public class ClickEventHandler {
 
     ItemStack item = event.getEntityPlayer().inventory.getCurrentItem();
 
-    if (item.getItem() instanceof ItemInjector == false) {
+    if (item.getItem() instanceof ItemSyringe == false) {
       return;
     }
     if (event.getTarget() instanceof EntityHorse == false) {
@@ -27,11 +31,14 @@ public class ClickEventHandler {
 
     EntityHorse horse = (EntityHorse) event.getTarget();
 
-    horse.attackEntityFrom(new DamageSource("Injector"), 2f);
+    horse.attackEntityFrom(new DamageSource("Syringe"), 2f);
+
+    item.shrink(1);
+    ItemStack dna = new ItemStack(HardcoreGrazierItems.SYRINGE_BLOOD, 1);
 
     NBTTagCompound nbt;
-    if (item.hasTagCompound()) {
-      nbt = item.getTagCompound();
+    if (dna.hasTagCompound()) {
+      nbt = dna.getTagCompound();
     } else {
       nbt = new NBTTagCompound();
     }
@@ -40,6 +47,8 @@ public class ClickEventHandler {
     nbt.setFloat("Max Health", horse.getMaxHealth());
     nbt.setDouble("Movement Speed", horse.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
 
-    item.setTagCompound(nbt);
+    dna.setTagCompound(nbt);
+
+    event.getEntityPlayer().inventory.addItemStackToInventory(dna);
   }
 }

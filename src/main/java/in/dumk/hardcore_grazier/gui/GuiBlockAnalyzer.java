@@ -39,5 +39,4 @@ public class GuiBlockAnalyzer extends GuiContainer {
     this.mc.fontRenderer.drawString(s, this.guiLeft + this.xSize / 2 - this.mc.fontRenderer.getStringWidth(s) / 2, this.guiTop + 6, 4210752); //Draws the block breaker name in the center on the top of the gui
     this.mc.fontRenderer.drawString(this.playerInv.getDisplayName().getFormattedText(), this.guiLeft + 8, this.guiTop + 72, 4210752); //The player's inventory name
   }
-
 }

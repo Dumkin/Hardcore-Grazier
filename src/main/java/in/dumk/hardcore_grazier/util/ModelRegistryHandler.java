@@ -13,7 +13,9 @@ public class ModelRegistryHandler {
 
   @SubscribeEvent
   public static void registerModels(ModelRegistryEvent event) {
-    registerModel(HardcoreGrazierItems.INJECTOR);
+    registerModel(HardcoreGrazierItems.SYRINGE);
+    registerModel(HardcoreGrazierItems.SYRINGE_BLOOD);
+    registerModel(HardcoreGrazierItems.DECODED_DNA);
 
     registerModel(Item.getItemFromBlock(HardcoreGrazierBlocks.ANALYZER));
   }
