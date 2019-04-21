@@ -1,3 +1,6 @@
 itemGroup.hardcore_grazier.main=Hardcore Grazier
 
 item.hardcore_grazier.injector.name=Injector
+
+tile.hardcore_grazier.analyzer.name=Analyzer
+container.hardcore_grazier.analyzer=Analyzer

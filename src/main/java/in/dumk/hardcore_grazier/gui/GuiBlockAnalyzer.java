@@ -35,9 +35,9 @@ public class GuiBlockAnalyzer extends GuiContainer {
 
     this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-    String s = I18n.format("container.block_breaker"); //Gets the formatted name for the block breaker from the language file - NOTE ADD "container.block_breaker=Block Breaker" to the language file (without quotes) and then delete this note
-    this.mc.fontRenderer.drawString(s, this.xSize / 2 - this.mc.fontRenderer.getStringWidth(s) / 2, 6, 4210752); //Draws the block breaker name in the center on the top of the gui
-    this.mc.fontRenderer.drawString(this.playerInv.getDisplayName().getFormattedText(), 8, 72, 4210752); //The player's inventory name
+    String s = I18n.format("container.hardcore_grazier.analyzer"); //Gets the formatted name for the block breaker from the language file - NOTE ADD "container.block_breaker=Block Breaker" to the language file (without quotes) and then delete this note
+    this.mc.fontRenderer.drawString(s, this.guiLeft + this.xSize / 2 - this.mc.fontRenderer.getStringWidth(s) / 2, this.guiTop + 6, 4210752); //Draws the block breaker name in the center on the top of the gui
+    this.mc.fontRenderer.drawString(this.playerInv.getDisplayName().getFormattedText(), this.guiLeft + 8, this.guiTop + 72, 4210752); //The player's inventory name
   }
 
 }
