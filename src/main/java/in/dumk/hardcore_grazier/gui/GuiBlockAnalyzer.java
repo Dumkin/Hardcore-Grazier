@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiBlockAnalyzer extends GuiContainer {
 
-  //  private TileEntityAnalyzer te;
+  private TileEntityAnalyzer te;
   private IInventory playerInv;
 
   public GuiBlockAnalyzer(IInventory playerInv, TileEntityAnalyzer te) {
@@ -24,7 +24,7 @@ public class GuiBlockAnalyzer extends GuiContainer {
     this.ySize = 166;
 
     this.playerInv = playerInv;
-//    this.te = te;
+    this.te = te;
   }
 
   @Override
@@ -38,6 +38,8 @@ public class GuiBlockAnalyzer extends GuiContainer {
     String s = I18n.format("container.hardcore_grazier.analyzer"); //Gets the formatted name for the block breaker from the language file - NOTE ADD "container.block_breaker=Block Breaker" to the language file (without quotes) and then delete this note
     this.mc.fontRenderer.drawString(s, this.guiLeft + this.xSize / 2 - this.mc.fontRenderer.getStringWidth(s) / 2, this.guiTop + 6, 4210752); //Draws the block breaker name in the center on the top of the gui
     this.mc.fontRenderer.drawString(this.playerInv.getDisplayName().getFormattedText(), this.guiLeft + 8, this.guiTop + 72, 4210752); //The player's inventory name
-  }
 
+    String progress = te.getProgress();
+    this.mc.fontRenderer.drawString(progress, this.guiLeft + this.xSize / 2 - this.mc.fontRenderer.getStringWidth(progress) / 2, this.guiTop + 19, 4210752); //Draws the block breaker name in the center on the top of the gui
+  }
 }

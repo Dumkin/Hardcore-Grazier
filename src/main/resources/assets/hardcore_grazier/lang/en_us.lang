@@ -1,6 +1,8 @@
 itemGroup.hardcore_grazier.main=Hardcore Grazier
 
-item.hardcore_grazier.injector.name=Injector
+item.hardcore_grazier.syringe.name=Syringe
+item.hardcore_grazier.syringe_blood.name=Syringe with blood
+item.hardcore_grazier.decoded_dna.name=Decoded DNA
 
 tile.hardcore_grazier.analyzer.name=Analyzer
 container.hardcore_grazier.analyzer=Analyzer

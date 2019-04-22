@@ -15,6 +15,6 @@ public class TabMain extends CreativeTabs {
   @SideOnly(Side.CLIENT)
   @Override
   public ItemStack getTabIconItem() {
-    return new ItemStack(HardcoreGrazierItems.INJECTOR);
+    return new ItemStack(HardcoreGrazierItems.SYRINGE);
   }
 }
