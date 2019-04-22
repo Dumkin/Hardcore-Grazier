@@ -24,14 +24,6 @@ public class ItemSyringe extends Item {
   @SideOnly(Side.CLIENT)
   @Override
   public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-//    if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Jump Strength")) {
-//      tooltip.add("Jump Strength: " + stack.getTagCompound().getDouble("Jump Strength"));
-//      tooltip.add("Max Health: " + stack.getTagCompound().getFloat("Max Health"));
-//      tooltip.add("Movement Speed: " + stack.getTagCompound().getDouble("Movement Speed"));
-//      tooltip.add("Information need analyze");
-//    } else {
-//      tooltip.add("Click to horse to get DNA");
-//    }
     tooltip.add("Click to horse to get DNA");
   }
 }

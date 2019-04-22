@@ -1,12 +1,9 @@
 package in.dumk.hardcore_grazier.entity;
 
-import in.dumk.hardcore_grazier.HardcoreGrazier;
 import in.dumk.hardcore_grazier.item.ItemSyringe;
-import in.dumk.hardcore_grazier.item.ItemSyringeBlood;
 import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -43,9 +40,25 @@ public class ClickEventHandler {
       nbt = new NBTTagCompound();
     }
 
-    nbt.setDouble("Jump Strength", horse.getHorseJumpStrength());
-    nbt.setFloat("Max Health", horse.getMaxHealth());
-    nbt.setDouble("Movement Speed", horse.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
+    double movementSpeed = horse.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue();
+    double jumpStrength = horse.getHorseJumpStrength();
+    float maxHealth = horse.getMaxHealth();
+
+    nbt.setDouble("movement_speed", movementSpeed);
+    nbt.setDouble("jump_strength", jumpStrength);
+    nbt.setFloat("max_health", maxHealth);
+
+    double yVelocity = jumpStrength;
+    double jumpHeight = 0;
+    while (yVelocity > 0) {
+      jumpHeight += yVelocity;
+      yVelocity -= 0.08;
+      yVelocity *= 0.98;
+    }
+
+    nbt.setString("movement_speed_f", String.format("%.2f", movementSpeed * 43));
+    nbt.setString("jump_strength_f", String.format("%.2f", jumpHeight));
+    nbt.setString("max_health_f", String.format("%.1f", maxHealth / 2));
 
     dna.setTagCompound(nbt);
 

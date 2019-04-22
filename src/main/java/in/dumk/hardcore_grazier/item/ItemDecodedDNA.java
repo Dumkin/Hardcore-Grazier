@@ -24,10 +24,10 @@ public class ItemDecodedDNA extends Item {
   @SideOnly(Side.CLIENT)
   @Override
   public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-    if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Jump Strength")) {
-      tooltip.add("Jump Strength: " + stack.getTagCompound().getDouble("Jump Strength"));
-      tooltip.add("Max Health: " + stack.getTagCompound().getFloat("Max Health"));
-      tooltip.add("Movement Speed: " + stack.getTagCompound().getDouble("Movement Speed"));
+    if (stack.hasTagCompound() && stack.getTagCompound().hasKey("jump_strength_f")) {
+      tooltip.add("Movement Speed: " + stack.getTagCompound().getString("movement_speed_f"));
+      tooltip.add("Jump Strength: " + stack.getTagCompound().getString("jump_strength_f"));
+      tooltip.add("Max Health: " + stack.getTagCompound().getString("max_health_f"));
     } else {
       tooltip.add("Error in analyze DNA");
     }

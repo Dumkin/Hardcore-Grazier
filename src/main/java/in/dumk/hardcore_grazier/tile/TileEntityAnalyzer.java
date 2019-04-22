@@ -1,10 +1,7 @@
 package in.dumk.hardcore_grazier.tile;
 
-import in.dumk.hardcore_grazier.HardcoreGrazier;
-import in.dumk.hardcore_grazier.item.ItemSyringe;
 import in.dumk.hardcore_grazier.item.ItemSyringeBlood;
 import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -45,18 +42,9 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable, ICapabi
     return super.writeToNBT(compound);
   }
 
-  // TODO: wtf code on yt
-  // https://www.youtube.com/watch?v=4Y_9B58vbPw&list=PLpKu3PfwdqHRA8aoa4RAzO9camNR9Tm45&index=21
-  // 7:29
-
-//  public int getCount() {
-//    return this.count;
-//  }
-//
-//  public void incrementCount() {
-//    this.count++;
-//    this.markDirty();
-//  }
+  public String getProgress() {
+    return String.format("%d%%", 100 - this.processUntil);
+  }
 
   @Override
   public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
@@ -94,8 +82,6 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable, ICapabi
 
   @Override
   public void update() {
-//    HardcoreGrazier.logger.info(this.handler.getStackInSlot(0).getItem() instanceof ItemSyringe);
-//    HardcoreGrazier.logger.info(this.processUntil);
     if (this.handler.getStackInSlot(0).isEmpty()) {
       this.processUntil = 100;
       this.markDirty();

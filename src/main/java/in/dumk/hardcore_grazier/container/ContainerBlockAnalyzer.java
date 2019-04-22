@@ -14,8 +14,8 @@ public class ContainerBlockAnalyzer extends Container {
   public ContainerBlockAnalyzer(IInventory playerInv, TileEntityAnalyzer te) {
     IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
-    this.addSlotToContainer(new SlotItemHandler(handler, 0, 62 + 0 * 18, 17));
-    this.addSlotToContainer(new SlotItemHandler(handler, 1, 62 + 2 * 18, 17));
+    this.addSlotToContainer(new SlotItemHandler(handler, 0, 62 + 0 * 18, 17 + 1 * 18));
+    this.addSlotToContainer(new SlotItemHandler(handler, 1, 62 + 2 * 18, 17 + 1 * 18));
 //    for (int y = 0; y < 3; ++y) {
 //      for (int x = 0; x < 3; ++x) {
 //        this.addSlotToContainer(new SlotItemHandler(handler, x + y * 3, 62 + x * 18, 17 + y * 18));
