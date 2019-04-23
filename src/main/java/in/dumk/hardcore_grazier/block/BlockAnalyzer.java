@@ -59,12 +59,15 @@ public class BlockAnalyzer extends Block {
 
   @Override
   public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-    TileEntityAnalyzer tile = (TileEntityAnalyzer) worldIn.getTileEntity(pos);
-    IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+    TileEntity tileentity = worldIn.getTileEntity(pos);
 
-    for (int slot = 0; slot < handler.getSlots() - 1; slot++) {
-      ItemStack stack = handler.getStackInSlot(slot);
-      InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack);
+    if (tileentity instanceof TileEntityAnalyzer) {
+      IItemHandler handler = tileentity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+
+      for (int slot = 0; slot < handler.getSlots() - 1; slot++) {
+        ItemStack stack = handler.getStackInSlot(slot);
+        InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack);
+      }
     }
 
     super.breakBlock(worldIn, pos, state);

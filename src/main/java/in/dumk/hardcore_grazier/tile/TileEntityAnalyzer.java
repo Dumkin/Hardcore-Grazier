@@ -18,10 +18,12 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable, ICapabi
 
   private ItemStackHandler handler;
   private int processUntil;
+
   public static final int itemsCount = 2;
+  public static final int tickOnItem = 300;
 
   public TileEntityAnalyzer() {
-    this.processUntil = 100;
+    this.processUntil = tickOnItem;
     this.handler = new ItemStackHandler(itemsCount);
   }
 
@@ -42,7 +44,7 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable, ICapabi
   }
 
   public String getProgress() {
-    return String.format("%d%%", 100 - this.processUntil);
+    return String.format("%.1f%%", ((this.tickOnItem - this.processUntil) * 100.0f) / this.tickOnItem);
   }
 
   @Override
@@ -67,7 +69,7 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable, ICapabi
   @Override
   public void update() {
     if (this.handler.getStackInSlot(0).isEmpty()) {
-      this.processUntil = 100;
+      this.processUntil = tickOnItem;
       this.markDirty();
     } else if (this.handler.getStackInSlot(0).getItem() == HardcoreGrazierItems.SYRINGE_BLOOD && this.handler.getStackInSlot(1).isEmpty()){
       this.processUntil--;
