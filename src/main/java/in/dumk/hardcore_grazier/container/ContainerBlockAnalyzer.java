@@ -1,6 +1,7 @@
 package in.dumk.hardcore_grazier.container;
 
 import in.dumk.hardcore_grazier.tile.TileEntityAnalyzer;
+import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -16,11 +17,6 @@ public class ContainerBlockAnalyzer extends Container {
 
     this.addSlotToContainer(new SlotItemHandler(handler, 0, 62 + 0 * 18, 17 + 1 * 18));
     this.addSlotToContainer(new SlotItemHandler(handler, 1, 62 + 2 * 18, 17 + 1 * 18));
-//    for (int y = 0; y < 3; ++y) {
-//      for (int x = 0; x < 3; ++x) {
-//        this.addSlotToContainer(new SlotItemHandler(handler, x + y * 3, 62 + x * 18, 17 + y * 18));
-//      }
-//    }
 
     int xPos = 8;
     int yPos = 84;
@@ -36,7 +32,6 @@ public class ContainerBlockAnalyzer extends Container {
     }
   }
 
-  // TODO: Shift click beta
   @Override
   public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
     int inventoryStart = TileEntityAnalyzer.itemsCount;
@@ -50,17 +45,14 @@ public class ContainerBlockAnalyzer extends Container {
       ItemStack newStack = theSlot.getStack();
       ItemStack currentStack = newStack.copy();
 
-      //Other Slots in Inventory excluded
+      // Other Slots in Inventory excluded
       if (slot >= inventoryStart) {
-//        Shift from Inventory
-//        if(newStack.getItem() == InitItems.itemMisc && newStack.getItemDamage() == TheMiscItems.CANOLA.ordinal()){
-//          if(!this.mergeItemStack(newStack, 0, 1, false)){
-//            return ItemStack.EMPTY;
-//          }
-//        }
-//
-//        else if(slot >= inventoryStart && slot <= inventoryEnd){
-        if (slot <= inventoryEnd) {
+        // Shift from Inventory
+        if (newStack.getItem() == HardcoreGrazierItems.SYRINGE_BLOOD) {
+          if (!this.mergeItemStack(newStack, 0, 1, false)) {
+            return ItemStack.EMPTY;
+          }
+        } else if (slot <= inventoryEnd) {
           if (!this.mergeItemStack(newStack, hotbarStart, hotbarEnd + 1, false)) {
             return ItemStack.EMPTY;
           }

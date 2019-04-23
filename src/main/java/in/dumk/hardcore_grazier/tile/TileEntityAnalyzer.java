@@ -1,6 +1,5 @@
 package in.dumk.hardcore_grazier.tile;
 
-import in.dumk.hardcore_grazier.item.ItemSyringeBlood;
 import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -65,28 +64,12 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable, ICapabi
     return super.getCapability(capability, facing);
   }
 
-  /**
-   * Returns true if automation is allowed to insert the given stack (ignoring stack size) into the given slot. For
-   * guis use Slot.isItemValid
-   */
-  public boolean isItemValidForSlot(int index, ItemStack stack) {
-    switch (index) {
-      case 0:
-        return true;
-      case 1:
-        return false;
-      default:
-        return true;
-    }
-  }
-
   @Override
   public void update() {
     if (this.handler.getStackInSlot(0).isEmpty()) {
       this.processUntil = 100;
       this.markDirty();
-    } else if (this.handler.getStackInSlot(0).getItem() instanceof ItemSyringeBlood) {
-//    } else if (this.handler.getStackInSlot(0).getItem() == HardcoreGrazierItems.INJECTOR && this.handler.getStackInSlot(1).isEmpty()){
+    } else if (this.handler.getStackInSlot(0).getItem() == HardcoreGrazierItems.SYRINGE_BLOOD && this.handler.getStackInSlot(1).isEmpty()){
       this.processUntil--;
       this.markDirty();
     }
