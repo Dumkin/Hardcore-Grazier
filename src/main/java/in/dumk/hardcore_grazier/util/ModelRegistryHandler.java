@@ -19,6 +19,7 @@ public class ModelRegistryHandler {
 
     registerModel(Item.getItemFromBlock(HardcoreGrazierBlocks.ANALYZER));
     registerModel(Item.getItemFromBlock(HardcoreGrazierBlocks.INCUBATOR));
+    registerModel(Item.getItemFromBlock(HardcoreGrazierBlocks.EGG));
   }
 
   private static void registerModel(Item item) {

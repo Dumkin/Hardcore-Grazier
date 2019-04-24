@@ -8,4 +8,5 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class HardcoreGrazierBlocks {
   public static final Block ANALYZER = null;
   public static final Block INCUBATOR = null;
+  public static final Block EGG = null;
 }

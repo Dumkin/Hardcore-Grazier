@@ -9,7 +9,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.datafix.walkers.EntityTag;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -67,8 +66,6 @@ public class TileEntityIncubator extends TileEntity implements ITickable, ICapab
 
         egg.getTagCompound().setTag("EntityTag", nbt);
       }
-
-
 
       this.handler.getStackInSlot(0).shrink(1);
       this.handler.getStackInSlot(1).shrink(1);

@@ -2,7 +2,6 @@ package in.dumk.hardcore_grazier.block;
 
 import in.dumk.hardcore_grazier.HardcoreGrazier;
 import in.dumk.hardcore_grazier.gui.GuiHandler;
-import in.dumk.hardcore_grazier.tile.TileEntityAnalyzer;
 import in.dumk.hardcore_grazier.tile.TileEntityIncubator;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

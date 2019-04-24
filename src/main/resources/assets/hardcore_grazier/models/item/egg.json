@@ -1,5 +1,5 @@
 {
-  "parent": "hardcore_grazier:block/analyzer",
+  "parent": "hardcore_grazier:block/egg",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],
