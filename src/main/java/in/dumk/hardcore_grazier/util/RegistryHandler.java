@@ -1,6 +1,7 @@
 package in.dumk.hardcore_grazier.util;
 
 import in.dumk.hardcore_grazier.block.BlockAnalyzer;
+import in.dumk.hardcore_grazier.block.BlockIncubator;
 import in.dumk.hardcore_grazier.item.ItemDecodedDNA;
 import in.dumk.hardcore_grazier.item.ItemSyringe;
 import in.dumk.hardcore_grazier.item.ItemSyringeBlood;
@@ -16,7 +17,8 @@ public class RegistryHandler {
   @SubscribeEvent
   public static void registerBlocks(Register<Block> event) {
     final Block[] blocks = {
-      new BlockAnalyzer("analyzer")
+      new BlockAnalyzer("analyzer"),
+      new BlockIncubator("incubator")
     };
 
     event.getRegistry().registerAll(blocks);
@@ -30,7 +32,8 @@ public class RegistryHandler {
       new ItemDecodedDNA("decoded_dna")
     };
     final Item[] itemBlocks = {
-      new ItemBlock(HardcoreGrazierBlocks.ANALYZER).setRegistryName(HardcoreGrazierBlocks.ANALYZER.getRegistryName())
+      new ItemBlock(HardcoreGrazierBlocks.ANALYZER).setRegistryName(HardcoreGrazierBlocks.ANALYZER.getRegistryName()),
+      new ItemBlock(HardcoreGrazierBlocks.INCUBATOR).setRegistryName(HardcoreGrazierBlocks.INCUBATOR.getRegistryName())
     };
 
     event.getRegistry().registerAll(items);

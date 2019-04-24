@@ -2,11 +2,14 @@ package in.dumk.hardcore_grazier.tile;
 
 import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.datafix.walkers.EntityTag;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -15,14 +18,14 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityAnalyzer extends TileEntity implements ITickable, ICapabilityProvider {
+public class TileEntityIncubator extends TileEntity implements ITickable, ICapabilityProvider {
   private ItemStackHandler handler;
   private int progress;
 
   public static final int itemsCount = 3;
   public static final int duration = 20 * 5;
 
-  public TileEntityAnalyzer() {
+  public TileEntityIncubator() {
     this.progress = 0;
     this.handler = new ItemStackHandler(itemsCount);
   }
@@ -42,8 +45,8 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable, ICapabi
       return;
     }
 
-    if (this.handler.getStackInSlot(0).getItem() == HardcoreGrazierItems.SYRINGE_BLOOD &&
-      this.handler.getStackInSlot(1).getItem() == Items.PAPER &&
+    if (this.handler.getStackInSlot(0).getItem() == HardcoreGrazierItems.DECODED_DNA &&
+      this.handler.getStackInSlot(1).getItem() == Items.EGG &&
       this.handler.getStackInSlot(2).isEmpty()) {
 
       this.progress++;
@@ -51,17 +54,25 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable, ICapabi
     }
 
     if (!this.world.isRemote && this.progress >= this.duration) {
-      NBTTagCompound nbt;
-      ItemStack dna = new ItemStack(HardcoreGrazierItems.DECODED_DNA, 1);
+      ItemStack egg = new ItemStack(Items.SPAWN_EGG, 1);
+      ItemMonsterPlacer.applyEntityIdToItemStack(egg, new ResourceLocation("minecraft", "horse"));
 
       if (this.handler.getStackInSlot(0).hasTagCompound()) {
-        nbt = this.handler.getStackInSlot(0).getTagCompound();
-        dna.setTagCompound(nbt);
+        NBTTagCompound dna = this.handler.getStackInSlot(0).getTagCompound();
+        NBTTagCompound nbt = egg.getTagCompound().getCompoundTag("EntityTag");
+
+        nbt.setDouble("maxHealth", dna.getDouble("movement_speed"));
+        nbt.setDouble("movementSpeed", dna.getDouble("jump_strength"));
+        nbt.setFloat("jumpStrength", dna.getFloat("max_health"));
+
+        egg.getTagCompound().setTag("EntityTag", nbt);
       }
+
+
 
       this.handler.getStackInSlot(0).shrink(1);
       this.handler.getStackInSlot(1).shrink(1);
-      this.handler.setStackInSlot(2, dna);
+      this.handler.setStackInSlot(2, egg);
       this.markDirty();
     }
   }

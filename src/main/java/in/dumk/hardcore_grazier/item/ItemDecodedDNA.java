@@ -24,6 +24,9 @@ public class ItemDecodedDNA extends Item {
   @SideOnly(Side.CLIENT)
   @Override
   public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+//    if (GuiScreen.isShiftKeyDown()) {
+//    }
+
     if (stack.hasTagCompound() && stack.getTagCompound().hasKey("jump_strength_f")) {
       tooltip.add("Movement Speed: " + stack.getTagCompound().getString("movement_speed_f"));
       tooltip.add("Jump Strength: " + stack.getTagCompound().getString("jump_strength_f"));

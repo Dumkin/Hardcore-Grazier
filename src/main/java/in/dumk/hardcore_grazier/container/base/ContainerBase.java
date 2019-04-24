@@ -1,30 +1,15 @@
-package in.dumk.hardcore_grazier.container;
+package in.dumk.hardcore_grazier.container.base;
 
-import in.dumk.hardcore_grazier.container.slot.SlotItemHandlerBlocked;
-import in.dumk.hardcore_grazier.container.slot.SlotItemHandlerWhiteList;
 import in.dumk.hardcore_grazier.tile.TileEntityAnalyzer;
 import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
-public class ContainerBlockAnalyzer extends Container {
-  public ContainerBlockAnalyzer(IInventory playerInv, TileEntityAnalyzer te) {
-    IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-
-    Item[] whitelist = {HardcoreGrazierItems.SYRINGE_BLOOD};
-
-    this.addSlotToContainer(new SlotItemHandlerWhiteList(whitelist, handler, 0, 62 + 0 * 18, 17 + 1 * 18));
-    this.addSlotToContainer(new SlotItemHandlerBlocked(handler, 1, 62 + 2 * 18, 17 + 1 * 18));
-
-    int xPos = 8;
-    int yPos = 84;
-
+public class ContainerBase extends Container {
+  public void addInventoryToContainer(IInventory playerInv, int xPos, int yPos) {
     for (int y = 0; y < 3; ++y) {
       for (int x = 0; x < 9; ++x) {
         this.addSlotToContainer(new Slot(playerInv, x + y * 9 + 9, xPos + x * 18, yPos + y * 18));

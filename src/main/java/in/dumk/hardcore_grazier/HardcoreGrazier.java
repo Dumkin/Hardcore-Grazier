@@ -1,10 +1,11 @@
 package in.dumk.hardcore_grazier;
 
-import in.dumk.hardcore_grazier.entity.ClickEventHandler;
+import in.dumk.hardcore_grazier.event.RightClickHorse;
 import in.dumk.hardcore_grazier.gui.GuiHandler;
 import in.dumk.hardcore_grazier.proxy.IProxy;
 import in.dumk.hardcore_grazier.tabs.TabMain;
 import in.dumk.hardcore_grazier.tile.TileEntityAnalyzer;
+import in.dumk.hardcore_grazier.tile.TileEntityIncubator;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -53,9 +54,10 @@ public class HardcoreGrazier {
 
     NetworkRegistry.INSTANCE.registerGuiHandler(HardcoreGrazier.INSTANCE, new GuiHandler());
 
-    MinecraftForge.EVENT_BUS.register(new ClickEventHandler());
+    MinecraftForge.EVENT_BUS.register(new RightClickHorse());
 
     GameRegistry.registerTileEntity(TileEntityAnalyzer.class, new ResourceLocation(HardcoreGrazier.MODID, "analyzer"));
+    GameRegistry.registerTileEntity(TileEntityIncubator.class, new ResourceLocation(HardcoreGrazier.MODID, "incubator"));
 
     proxy.init(event);
   }

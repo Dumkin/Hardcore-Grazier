@@ -3,6 +3,7 @@ package in.dumk.hardcore_grazier.block;
 import in.dumk.hardcore_grazier.HardcoreGrazier;
 import in.dumk.hardcore_grazier.gui.GuiHandler;
 import in.dumk.hardcore_grazier.tile.TileEntityAnalyzer;
+import in.dumk.hardcore_grazier.tile.TileEntityIncubator;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -18,8 +19,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-public class BlockAnalyzer extends Block {
-  public BlockAnalyzer(String name) {
+public class BlockIncubator extends Block {
+  public BlockIncubator(String name) {
     super(Material.IRON);
 
     this.setSoundType(SoundType.METAL);
@@ -36,14 +37,14 @@ public class BlockAnalyzer extends Block {
 
   @Override
   public TileEntity createTileEntity(World world, IBlockState state) {
-    return new TileEntityAnalyzer();
+    return new TileEntityIncubator();
   }
 
   @Override
   public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
     if (!worldIn.isRemote) {
-      if (worldIn.getTileEntity(pos) instanceof TileEntityAnalyzer) {
-        playerIn.openGui(HardcoreGrazier.INSTANCE, GuiHandler.BLOCK_ANALYZER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+      if (worldIn.getTileEntity(pos) instanceof TileEntityIncubator) {
+        playerIn.openGui(HardcoreGrazier.INSTANCE, GuiHandler.BLOCK_INCUBATOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
       }
     }
     return true;
@@ -53,7 +54,7 @@ public class BlockAnalyzer extends Block {
   public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
     TileEntity tileentity = worldIn.getTileEntity(pos);
 
-    if (tileentity instanceof TileEntityAnalyzer) {
+    if (tileentity instanceof TileEntityIncubator) {
       IItemHandler handler = tileentity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
       for (int slot = 0; slot < handler.getSlots() - 1; slot++) {

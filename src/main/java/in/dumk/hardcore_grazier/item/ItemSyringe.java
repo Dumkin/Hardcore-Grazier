@@ -1,6 +1,7 @@
 package in.dumk.hardcore_grazier.item;
 
 import in.dumk.hardcore_grazier.HardcoreGrazier;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,6 @@ public class ItemSyringe extends Item {
   @SideOnly(Side.CLIENT)
   @Override
   public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-    tooltip.add("Click to horse to get DNA");
+    tooltip.add(I18n.format(this.getUnlocalizedName() + ".tooltip"));
   }
 }

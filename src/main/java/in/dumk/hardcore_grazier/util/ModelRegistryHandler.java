@@ -18,6 +18,7 @@ public class ModelRegistryHandler {
     registerModel(HardcoreGrazierItems.DECODED_DNA);
 
     registerModel(Item.getItemFromBlock(HardcoreGrazierBlocks.ANALYZER));
+    registerModel(Item.getItemFromBlock(HardcoreGrazierBlocks.INCUBATOR));
   }
 
   private static void registerModel(Item item) {
