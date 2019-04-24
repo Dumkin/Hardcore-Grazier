@@ -4,8 +4,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class SlotItemHandlerBlocked extends SlotItemHandler {
-  public SlotItemHandlerBlocked(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
+public class SlotBlocked extends SlotItemHandler {
+  public SlotBlocked(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
     super(itemHandler, index, xPosition, yPosition);
   }
 

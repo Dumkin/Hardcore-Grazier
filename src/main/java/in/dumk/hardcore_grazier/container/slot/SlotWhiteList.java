@@ -7,16 +7,16 @@ import net.minecraftforge.items.SlotItemHandler;
 
 import java.util.stream.Stream;
 
-public class SlotItemHandlerWhiteList extends SlotItemHandler {
+public class SlotWhiteList extends SlotItemHandler {
   private Item[] whitelist;
 
-  public SlotItemHandlerWhiteList(Item[] whitelist, IItemHandler itemHandler, int index, int xPosition, int yPosition) {
+  public SlotWhiteList(Item[] whitelist, IItemHandler itemHandler, int index, int xPosition, int yPosition) {
     super(itemHandler, index, xPosition, yPosition);
 
     this.whitelist = whitelist;
   }
 
-  public SlotItemHandlerWhiteList(Item whitelist, IItemHandler itemHandler, int index, int xPosition, int yPosition) {
+  public SlotWhiteList(Item whitelist, IItemHandler itemHandler, int index, int xPosition, int yPosition) {
     super(itemHandler, index, xPosition, yPosition);
 
     this.whitelist = new Item[]{whitelist};
@@ -24,6 +24,6 @@ public class SlotItemHandlerWhiteList extends SlotItemHandler {
 
   @Override
   public boolean isItemValid(ItemStack stack) {
-    return Stream.of(whitelist).anyMatch(x -> x == stack.getItem());
+    return Stream.of(this.whitelist).anyMatch(x -> x == stack.getItem());
   }
 }

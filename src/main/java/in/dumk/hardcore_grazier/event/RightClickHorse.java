@@ -1,4 +1,4 @@
-package in.dumk.hardcore_grazier.entity;
+package in.dumk.hardcore_grazier.event;
 
 import in.dumk.hardcore_grazier.item.ItemSyringe;
 import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
@@ -10,7 +10,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class ClickEventHandler {
+public class RightClickHorse {
   @SubscribeEvent
   public void onEntityRightClicked(PlayerInteractEvent.EntityInteract event) {
     if (event.getWorld().isRemote) {
