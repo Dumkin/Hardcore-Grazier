@@ -5,6 +5,7 @@ import in.dumk.hardcore_grazier.gui.GuiHandler;
 import in.dumk.hardcore_grazier.proxy.IProxy;
 import in.dumk.hardcore_grazier.tabs.TabMain;
 import in.dumk.hardcore_grazier.tile.TileEntityAnalyzer;
+import in.dumk.hardcore_grazier.tile.TileEntityEgg;
 import in.dumk.hardcore_grazier.tile.TileEntityIncubator;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
@@ -58,6 +59,7 @@ public class HardcoreGrazier {
 
     GameRegistry.registerTileEntity(TileEntityAnalyzer.class, new ResourceLocation(HardcoreGrazier.MODID, "analyzer"));
     GameRegistry.registerTileEntity(TileEntityIncubator.class, new ResourceLocation(HardcoreGrazier.MODID, "incubator"));
+    GameRegistry.registerTileEntity(TileEntityEgg.class, new ResourceLocation(HardcoreGrazier.MODID, "egg"));
 
     proxy.init(event);
   }

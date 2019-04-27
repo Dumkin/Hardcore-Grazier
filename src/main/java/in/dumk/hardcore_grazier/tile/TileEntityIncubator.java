@@ -1,5 +1,6 @@
 package in.dumk.hardcore_grazier.tile;
 
+import in.dumk.hardcore_grazier.util.HardcoreGrazierBlocks;
 import in.dumk.hardcore_grazier.util.HardcoreGrazierItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemMonsterPlacer;
@@ -53,18 +54,11 @@ public class TileEntityIncubator extends TileEntity implements ITickable, ICapab
     }
 
     if (!this.world.isRemote && this.progress >= this.duration) {
-      ItemStack egg = new ItemStack(Items.SPAWN_EGG, 1);
-      ItemMonsterPlacer.applyEntityIdToItemStack(egg, new ResourceLocation("minecraft", "horse"));
+      ItemStack egg = new ItemStack(HardcoreGrazierBlocks.EGG, 1);
 
       if (this.handler.getStackInSlot(0).hasTagCompound()) {
         NBTTagCompound dna = this.handler.getStackInSlot(0).getTagCompound();
-        NBTTagCompound nbt = egg.getTagCompound().getCompoundTag("EntityTag");
-
-        nbt.setDouble("maxHealth", dna.getDouble("movement_speed"));
-        nbt.setDouble("movementSpeed", dna.getDouble("jump_strength"));
-        nbt.setFloat("jumpStrength", dna.getFloat("max_health"));
-
-        egg.getTagCompound().setTag("EntityTag", nbt);
+        egg.setTagCompound(dna);
       }
 
       this.handler.getStackInSlot(0).shrink(1);
